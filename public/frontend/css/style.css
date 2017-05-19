@@ -1,0 +1,86 @@
+input[type="text"]:focus {
+    border:1px solid blue;
+}
+
+img{
+	width: 100%;
+}
+
+a:hover,a:focus{
+	text-decoration: none;
+}
+
+.navbar {
+	background: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 123123123;
+}
+.nav li a{
+	color: #ccc;
+}
+.nav li a:hover{
+	color: #000;
+}
+.navbar-nav{
+	margin-left: 30px; 
+}
+#welcome{
+	background: #b5ebf8;
+}
+.welcome{
+	text-align: center;
+    padding-top: 70px;
+    padding-bottom: 15px;
+}
+.post-filters{
+	background: black;
+    padding-top: 7px;
+    padding-bottom: 5px;
+
+}
+.nav-pills>li>a{
+	border-radius: 0;
+	padding-left: 0;
+    padding-right: 0;
+    margin-right: 20px;
+}
+.nav>li>a:hover, .nav>li>a:focus{
+	text-decoration: none;
+    background: #000;
+    color: #fff;
+
+}
+.hvr-underline-from-left:before{
+	background: #fff;
+}
+.post-item{
+	margin-top:50px; 
+}
+.media {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px; 
+}
+.media a img{
+	width: 50px;
+	height: 50px;
+}
+.media-body h5{
+	margin-top: 0; 
+}
+.media-heading{
+	margin-bottom: -12px;
+}
+.media-heading a{
+	color: #000;
+}
+.media-heading a:hover{
+	color: #428bca;
+}
+.media-body i{
+	margin-right: 10px;
+	color: #999;
+}
