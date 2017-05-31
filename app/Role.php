@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-     protected $fillable = [
+    protected $table = 'roles';
+    protected $fillable = [
         'id','name', 'content',
     ];
 
@@ -17,5 +18,15 @@ class Role extends Model
      */
     public function admin(){
         return $this->hasmany('App\Admin','id');
+    }
+
+    public function getListRole()
+    {
+        return self::get();
+    }
+    
+    public function getRoleByID($id)
+    {
+        return self::find($id);
     }
 }

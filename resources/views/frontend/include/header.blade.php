@@ -9,14 +9,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Blog</a>
+				<a class="navbar-brand" href="{{ asset('/') }}">Blog</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Posts</a></li>
-					<li><a href="#">Categories</a></li>
+					<li><a href="{{ asset('/') }}">Posts</a></li>
+					<li><a href="{{ asset('loai-bai-viet') }}">Categories</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 
@@ -28,10 +28,32 @@
 					</div><!-- /input-group -->
 
 				</form>
+				@php
+					$user = Auth::guard('web')->user();
+				@endphp
 				<ul class="nav navbar-nav navbar-right">
-					<li><a  href="#" ><i class="fa fa-lock"></i> Sign In</a></li>
+					<li>
+						@if ($user["name"] == null)
+							<a  href="http://blogk.com.vn/login"><i class="fa fa-lock"></i> Sign In</a>
+						@else
+							{{-- <a href=""></i></a> --}}
+
+							<a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+ 								<i class="fa fa-lock"></i>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                            <a href="">{!! $user['name'] !!}</a> 
+						@endif
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </div>
+
+<!-- Modal -->

@@ -13,7 +13,7 @@
 	<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="fa fa-user"></i><span class="break"></span>Members</h2>
+						<h2><i class="fa fa-user"></i><span class="break"></span>Staff</h2>
 					</div>
 					<div class="box-content">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -35,4 +35,5 @@
 					</div>
 				</div><!--/span-->
 			</div>
+			{!! $modal !!}
 @endsection()

@@ -19,72 +19,51 @@
 			</div>
 		</div>
 		<div class="box-content">
-			<form class="form-horizontal" enctype="multipart/form-data">
+		<form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="focusedInput">Name</label>
 						<div class="controls">
-						  <input class="input-xlarge focused" id="focusedInput" type="text" required>
+						  <input class="input-xlarge focused" name="name" id="focusedInput" type="text" value="{{ old('name',isset($admin)?$admin['name'] : null) }}" required >
 						</div>
 					 </div>
 					 <div class="control-group">
 						<label class="control-label" for="focusedInput">Email</label>
 						<div class="controls">
-						  <input class="input-xlarge focused" id="focusedInput" type="email" required>
-						</div>
-					 </div>
-					 <div class="control-group">
-						<label class="control-label" for="focusedInput">Password</label>
-						<div class="controls">
-						  <input class="input-xlarge focused" id="focusedInput" type="text" required>
+						  <input class="input-xlarge focused" name="email"  id="focusedInput" type="email" value="{{ old('name',isset($admin)?$admin['email'] : null) }}" required>
 						</div>
 					 </div>
 					 <div class="control-group">
 						<label class="control-label" for="focusedInput">Address</label>
 						<div class="controls">
-						  <input class="input-xlarge focused" id="focusedInput" type="text" required>
+						  <input class="input-xlarge focused" name="address" id="focusedInput" type="text" value="{{ old('name',isset($admin)?$admin['address'] : null) }}" required>
 						</div>
 					 </div>
 					 <div class="control-group">
 						<label class="control-label" for="focusedInput">Phone</label>
 						<div class="controls">
-						  <input class="input-xlarge focused" id="focusedInput" type="text" required>
+						  <input class="input-xlarge focused"  name="phone" id="focusedInput" type="text" value="{{ old('name',isset($admin)?$admin['phone'] : null) }}" required>
 						</div>
 					 </div>
 						<div class="control-group">
 							<label class="control-label" for="selectError3">Status</label>
 							<div class="controls">
-							  <select id="selectError3">
-								<option>Option 1</option>
-								<option>Option 2</option>
-								<option>Option 3</option>
-								<option>Option 4</option>
-								<option>Option 5</option>
+							  <select id="selectError3" name="status" >
+								 {!! $status !!}
+								
 							  </select>
 							</div>
 						  </div>
 					  <div class="control-group">
 						<label class="control-label" for="selectError3">Role</label>
 						<div class="controls">
-						  <select id="selectError3">
-							<option>Option 1</option>
-							<option>Option 2</option>
-							<option>Option 3</option>
-							<option>Option 4</option>
-							<option>Option 5</option>
+						  <select id="selectError3" name="role" >
+							 {!! $option !!}
 						  </select>
 						</div>
 					  </div>
-
-					<div class="form-group">
-						<label for="" class="col-sm-2 control-label">Avatar</label>
-						<div class="controls">
-							<input type="file" class="form-control1" id="fuImage" >
-						</div>
-					</div>          
-					
-
+					  
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary">Save changes</button>
 						<button type="reset" class="btn">Cancel</button>

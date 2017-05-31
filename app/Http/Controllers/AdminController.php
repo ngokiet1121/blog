@@ -3,40 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Admin;
-use App\Role;
-use Hash;
+
 class AdminController extends Controller
 {
-
-
-	function __construct(Admin $admin, Role $role)
-	{
-		$this->admin = $admin;
-		$this->role  = $role;
-
-	}
-	
-   	public function getLogin()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('backend/login');
+        $this->middleware('auth:admin');
     }
 
-    public function postLogin(Request $request){
-    	$data = Admin::select('id','name','email','password','phone','address','status','role_id')->get()->toArray();
-
-        foreach ($data as $admin =>$item) {
-            if($request->password==$item['password'] && $request->email == $item['email']){
-
-            return redirect()->route('admin.dashboard');
-            }else{
-                echo 'ádasdasd';
-            }
-        }
-    }
-
-    public function getDashboard()
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        return view('backend/index');
+        return view('backend.index');
     }
 }

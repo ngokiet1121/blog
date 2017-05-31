@@ -2,11 +2,21 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
-    protected $table ='admins';
+    use Notifiable;
+
+    protected $guard = 'admin';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+
     protected $fillable = [
         'id','name', 'email', 'password','phone', 'address','status', 'role_id',
     ];
@@ -28,8 +38,8 @@ class Admin extends Model
     public function category(){
         return $this->hasMany('App\Category','id');
     }
-    public function news(){
-        return $this->hasMany('App\News','id');
+    public function post(){
+        return $this->hasMany('App\Post','id');
     }
     public function comment(){
         return $this->hasMany('App\Comment','id');
@@ -37,8 +47,13 @@ class Admin extends Model
     public function other(){
         return $this->hasMany('App\OtherComment','id');
     }
-    public function getAll()
+    public function getListStaff()
     {
-        return self::get();
+        return self::select('id','name', 'email', 'password','phone', 'address','status', 'role_id')->where('role_id', '<>', 1)->orderBy('id','DESC')->get()->toArray();
+    }
+
+    public function getStaffByID($id)
+    {
+        return self::find($id);
     }
 }
